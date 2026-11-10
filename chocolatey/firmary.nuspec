@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>firmary</id>
+    <version>0.1.0</version>
+    <packageSourceUrl>https://github.com/Firmary/scoop-bucket/tree/main/chocolatey</packageSourceUrl>
+    <owners>Firmary LLC</owners>
+    <title>Firmary CLI</title>
+    <authors>Firmary LLC</authors>
+    <projectUrl>https://firmary.app/docs/cli</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/Firmary/firmary-plugin/main/assets/icon.png</iconUrl>
+    <licenseUrl>https://firmary.app/terms</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://firmary.app/docs/cli</docsUrl>
+    <tags>firmary accounting cli agents mcp</tags>
+    <summary>Firmary in your terminal: a command line for people and AI agents.</summary>
+    <description>Firmary in your terminal: a command line for people and AI agents. Sign in with `firmary auth login`, then list the commands with `firmary help`. Guide: https://firmary.app/docs/cli</description>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

@@ -1,0 +1,38 @@
+name: Update firmary
+
+# Keeps bucket/firmary.json at the latest release. Every release publishes its Scoop manifest next to
+# its downloads at https://firmary.app/cli/<version>/firmary.json, and /cli/latest/ points at the
+# newest stable one; this copies it here when it changes, so `scoop update` sees it within the hour.
+# This repository holds only the manifest: the program's source is not public.
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Fetch the latest manifest from firmary.app
+        run: |
+          curl --proto '=https' --tlsv1.2 -fsSL --retry 3 -o "$RUNNER_TEMP/firmary.json" https://firmary.app/cli/latest/firmary.json
+          # Valid JSON, and every download it names is on firmary.app.
+          jq -e '[.architecture[].url] | length > 0 and all(startswith("https://firmary.app/cli/"))' "$RUNNER_TEMP/firmary.json" > /dev/null
+          mkdir -p bucket
+          cp "$RUNNER_TEMP/firmary.json" bucket/firmary.json
+      - name: Commit it if it changed
+        run: |
+          git add bucket/firmary.json
+          git diff --cached --quiet && exit 0
+          git -c user.name=Firmary -c user.email=support@firmary.app commit -m "firmary $(jq -r .version bucket/firmary.json)"
+          git push
