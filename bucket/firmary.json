@@ -1,5 +1,5 @@
 {
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Firmary in your terminal: a command line and full-screen app for people and AI agents.",
   "homepage": "https://firmary.app/docs/cli",
   "license": {
@@ -8,12 +8,12 @@
   },
   "architecture": {
     "arm64": {
-      "url": "https://firmary.app/cli/0.2.3/firmary-cli-aarch64-pc-windows-msvc.zip",
-      "hash": "8e521d75c98253eaef0a4d2a3d8d203880500c67d3335b544db85201642d5ec5"
+      "url": "https://firmary.app/cli/0.2.4/firmary-cli-aarch64-pc-windows-msvc.zip",
+      "hash": "68f2d0e779b9f2128cee17edc682f8f110b9ed57bcb703af3370eff46e438a57"
     },
     "64bit": {
-      "url": "https://firmary.app/cli/0.2.3/firmary-cli-x86_64-pc-windows-msvc.zip",
-      "hash": "156f3b2e0f992303ea7dedb33d584417a460c7cda35caf9d03cad6e4983fbc92"
+      "url": "https://firmary.app/cli/0.2.4/firmary-cli-x86_64-pc-windows-msvc.zip",
+      "hash": "b012122dd0e60e7c1170573dc5f7117520e10a46364b35b04041cbcd31ed4b93"
     }
   },
   "bin": "firmary.exe",
